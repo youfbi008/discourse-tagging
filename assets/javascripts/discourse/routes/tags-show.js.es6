@@ -10,7 +10,11 @@ export default Discourse.Route.extend(OpenComposer, {
     this.render("navigation/categories", { outlet: "navigation-bar" });
     this.render('tags.show', { controller });
   },
-
+  
+  beforeModel() {
+    this.controllerFor("navigation/categories").set("filterMode", "categories");
+  },
+  
   model(params) {
     var tag = this.store.createRecord("tag", { id: Handlebars.Utils.escapeExpression(params.tag_id) }),
         f = '';
@@ -79,6 +83,11 @@ export default Discourse.Route.extend(OpenComposer, {
       filterMode: this.get('filterMode'),
       navMode: this.get('navMode'),
       tagNotification: this.get('tagNotification')
+    });
+    
+    this.controllerFor("navigation/categories").setProperties({
+      canCreateCategory: model.get("can_create_category"),
+      canCreateTopic: model.get("can_create_topic"),
     });
   },
 
