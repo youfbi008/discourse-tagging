@@ -1,6 +1,8 @@
 export default Discourse.Route.extend({
   renderTemplate() {
+    const controller = this.controllerFor('tags.index');
     this.render("navigation/categories", { outlet: "navigation-bar" });
+    this.render('tags.index', { controller });
   },
   
   beforeModel() {
