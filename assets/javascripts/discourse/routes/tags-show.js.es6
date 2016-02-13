@@ -7,6 +7,7 @@ export default Discourse.Route.extend(OpenComposer, {
 
   renderTemplate() {
     const controller = this.controllerFor('tags.show');
+    this.render("navigation/categories", { outlet: "navigation-bar" });
     this.render('tags.show', { controller });
   },
 
