@@ -10,12 +10,11 @@ var renderTag = function(tag, params) {
   }
 
 
-  var val = "<" + tagName + href + " class='" + classes.join(" ") + "'>" + tag;
+  var val = "<" + tagName + href + " class='" + classes.join(" ") + "'>" + tag + "</" + tagName + ">";
 
   if (params.count) {
     val += " <span class='discourse-tag-count'> (" + params.count + ")</span>";
   }
-  val += "</" + tagName + ">";
 
   return val;
 };
