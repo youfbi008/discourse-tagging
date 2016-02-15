@@ -14,7 +14,13 @@ export default Discourse.Route.extend({
   },
   
   setupController(controller, model) {
-
+    this.controllerFor('tags.index').setProperties({
+      model,
+      tag: model,
+      category: this.get('category'),
+      filterMode: this.get('filterMode'),
+    });
+    
     this.controllerFor("navigation/categories").setProperties({
       canCreateCategory: model.get("can_create_category"),
       canCreateTopic: model.get("can_create_topic"),
