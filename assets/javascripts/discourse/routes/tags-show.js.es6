@@ -12,7 +12,7 @@ export default Discourse.Route.extend(OpenComposer, {
   },
   
   beforeModel() {
-    this.controllerFor("navigation/categories").set("filterMode", "categories");
+    this.controllerFor("navigation/categories").set("filterMode", "tags");
   },
   
   model(params) {
